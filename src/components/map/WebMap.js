@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import ReactMapboxGl, { ZoomControl, Layer, Feature } from "react-mapbox-gl";
+import DrawControl from "react-mapbox-gl-draw";
+
+import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -20,7 +23,8 @@ class WebMap extends Component {
         }}
         center={[19.2593642, 42.4304196]}
       >
-        <ZoomControl />
+        <ZoomControl position="top-left" />
+        <DrawControl />
       </Map>
     );
   }
