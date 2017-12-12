@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import ReactMapboxGl, { ZoomControl, Layer, Feature } from "react-mapbox-gl";
+import ReactMapboxGl, { ZoomControl } from "react-mapbox-gl";
 import DrawControl from "react-mapbox-gl-draw";
 
 import "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
+
+import GeolocateControl from "./buttons/GeolocateControl";
 
 const Map = ReactMapboxGl({
   accessToken:
@@ -13,6 +15,15 @@ const Map = ReactMapboxGl({
 });
 
 class WebMap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { center: [19.2593642, 42.4304196] };
+  }
+
+  setCenterCoords = center => {
+    this.setState({ center });
+  };
+
   render() {
     return (
       <Map
@@ -21,8 +32,9 @@ class WebMap extends Component {
           height: "100vh",
           width: "100%"
         }}
-        center={[19.2593642, 42.4304196]}
+        center={this.state.center}
       >
+        <GeolocateControl centerCoords={this.setCenterCoords} />
         <ZoomControl position="top-left" />
         <DrawControl />
       </Map>

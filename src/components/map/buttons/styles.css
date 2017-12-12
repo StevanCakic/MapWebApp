@@ -1,0 +1,8 @@
+.geolocationBtn {
+  position: relative;
+  padding-left: 100px;
+}
+
+.geolocationBtn:hover {
+  cursor: pointer
+}
